@@ -1,0 +1,37 @@
+﻿<div class="row">
+    <div class="col-md-9">
+        <p class="subTitle">
+            <span class="fa fa-paw"></span>
+            Personal pets details
+        </p>
+    </div>
+    <div class="col-md-3">
+        <div class="inner-addon left-addon">
+            <i class="fa fa-filter"></i>
+            <input type="text" class="form-control"
+                   [(ngModel)]="filterValue" placeholder="Filter by pet type" />
+        </div>
+    </div>
+</div>
+
+
+<table class='table'>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Owner Name</th>
+            <th>Owner Gender</th>
+            <th>Owner Age</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="petsSummary">
+        <tr *ngFor="let petInfo of petsSummary | filter:'type': filterValue">
+            <td>{{ petInfo.name }}</td>
+            <td>{{ petInfo.type }}</td>
+            <td>{{ petInfo.ownerName }}</td>
+            <td>{{ petInfo.ownerGender }}</td>
+            <td>{{ petInfo.ownerAge }}</td>
+        </tr>
+    </tbody>
+</table>
